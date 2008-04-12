@@ -1,0 +1,28 @@
+<plugin name='extended-data-binding' version='0.2'>
+  <author>Luis Fernando Planella Gonzalez</author>
+  <authorEmail>lfpg.dev@gmail.com</authorEmail>
+  <title>This plugin extends Grails' data binding possibilities, both for parsing the user input and to present formatted data</title>
+  <description>The extended data binding plugin aims to allow configuring the DataBinder which controllers will use to parse
+the user input and populate objects, as well as using a custom class, WrappedBean to format data as String.
+This configuration can be done application-wide by setting closures on the servlet context 
+(possibly on the ApplicationBootStrap) on the following attributes: newDataBinder (takes the request and the 
+object and should return a GrailsDataBinder instance) and newBeanWrapper (also takes the request and the 
+object and should return a Spring's BeanWrapper instance).
+This plugin adds some methods to controllers: getBinder (takes an object and returns a DataBinder for that object, setting
+it on the request under the attribute 'dataBinder'), wrapBean (takes an object and returns a WrappedBean instance - 
+a class that uses an Spring's BeanWrapper and converts properties to strings using registered PropertyEditors) and bind 
+(takes an object, performs the data binding and returns the object itself). Both getBinder and wrapBean methods invoke 
+the global newDataBinder or newBeanWrapper closures (as explained above) and try calling a registerCustomEditors method 
+(passing the object) on the controller, which may be used to set any specific PropertyEditors on either DataBinder or 
+BeanWrapper). The getBinder also tries caling a initBinder method on the controller after registerCustomEditors. 
+Also, a tag library adds the following tags to the 'g' namespace: wrap (takes a bean attribute and a var attribute,
+exporting a WrappedBean instance into the given var - optionally under a custom scope) and eachWrapped (same as g:each,
+but automatically wrapping each element)
+</description>
+  <documentation>http://grails.org/Extended+Data+Binding+Plugin</documentation>
+  <resources>
+    <resource>UrlMappings</resource>
+    <resource>DataSource</resource>
+    <resource>ExtendedDataBindingTagLib</resource>
+  </resources>
+</plugin>
