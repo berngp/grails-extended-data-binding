@@ -5,7 +5,7 @@ import org.springframework.validation.BindingResult
 import br.inf.freeit.extendeddatabinding.WrappedBean
 
 class ExtendedDataBindingGrailsPlugin {
-    def version = 0.2
+    def version = 0.3
     def observe = ['controllers']
     def author = "Luis Fernando Planella Gonzalez"
     def authorEmail = "lfpg.dev@gmail.com"
@@ -28,10 +28,10 @@ Also, a tag library adds the following tags to the 'g' namespace: wrap (takes a 
 exporting a WrappedBean instance into the given var - optionally under a custom scope) and eachWrapped (same as g:each,
 but automatically wrapping each element)
 '''
-    def documentation = "http://grails.org/Extended+Data+Binding+Plugin"
+    def documentation = "http://www.grails.org/plugin/extended-data-binding"
 
     private boolean loggedDataBinder = false
-	private boolean loggedBeanWrapper = false
+    private boolean loggedBeanWrapper = false
 
     def doWithSpring = {
     }

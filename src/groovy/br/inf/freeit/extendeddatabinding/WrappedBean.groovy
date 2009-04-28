@@ -12,7 +12,7 @@ import org.springframework.validation.Errors
  */
 class WrappedBean {
 	
-	private static List wrapperProperties = ["beanWrapper", "wrappedInstance", "rootWrappedInstance", "errors"]
+	private static List wrapperProperties = ["beanWrapper", "wrappedInstance", "rootWrappedInstance", "errors", "metaClass"]
 	private static List primitiveTypes = [byte.class, short.class, int.class, long.class, char.class, boolean.class]
 	
 	private static boolean isBasicType(Class type) {

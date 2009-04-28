@@ -1,4 +1,4 @@
-<plugin name='extended-data-binding' version='0.2'>
+<plugin name='extended-data-binding' version='0.3' grailsVersion='1.1 &gt; *'>
   <author>Luis Fernando Planella Gonzalez</author>
   <authorEmail>lfpg.dev@gmail.com</authorEmail>
   <title>This plugin extends Grails' data binding possibilities, both for parsing the user input and to present formatted data</title>
@@ -19,10 +19,10 @@ Also, a tag library adds the following tags to the 'g' namespace: wrap (takes a 
 exporting a WrappedBean instance into the given var - optionally under a custom scope) and eachWrapped (same as g:each,
 but automatically wrapping each element)
 </description>
-  <documentation>http://grails.org/Extended+Data+Binding+Plugin</documentation>
+  <documentation>http://www.grails.org/plugin/extended-data-binding</documentation>
   <resources>
     <resource>UrlMappings</resource>
-    <resource>DataSource</resource>
     <resource>ExtendedDataBindingTagLib</resource>
   </resources>
+  <dependencies />
 </plugin>
