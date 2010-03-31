@@ -4,16 +4,18 @@ import org.springframework.beans.*
 import org.springframework.beans.propertyeditors.*
 import org.springframework.validation.*
 import java.text.*
+import java.beans.*
 
 
 class WrappedBeanTests extends GroovyTestCase {
 	WrappedBean wrappedBean
 	
 	void testSimpleGet() {
-		wrappedBean.wrappedInstance = new Person(name:"John", birthday: new GregorianCalendar(2000, 9, 8).time, income: 10705.87)
+		wrappedBean.wrappedInstance = new Person(name:"John", birthday: new GregorianCalendar(2000, 9, 8).time, income: 10705.87, gender: Gender.MALE)
 		assertEquals("John", wrappedBean.name)
 		assertEquals("08/10/2000", wrappedBean.birthday)
 		assertEquals("10.705,87", wrappedBean.income)
+		assertEquals("MALE", wrappedBean.gender)
 	}
 	
 	
@@ -23,19 +25,22 @@ class WrappedBeanTests extends GroovyTestCase {
 		wrappedBean.name = "John"
 		wrappedBean.birthday = "08/10/2000"
 		wrappedBean.income = "10.705,87"
+		wrappedBean.gender = "MALE"
 		assertEquals("John", p.name)
 		assertEquals(new GregorianCalendar(2000, 9, 8).time, p.birthday)
 		assertEquals(new BigDecimal("10705.87"), p.income)
+		assertEquals(Gender.MALE, p.gender);
 	}
 
 	void testNestedGet() {
-		Person p1 = new Person(name:"John", birthday: new GregorianCalendar(2000, 9, 8).time, income: 10705.87)
+		Person p1 = new Person(name:"John", birthday: new GregorianCalendar(2000, 9, 8).time, income: 10705.87, gender: Gender.MALE)
 		Person p2 = new Person(friend:p1)
 		
 		wrappedBean.wrappedInstance = p2
 		assertEquals("John", wrappedBean.friend.name)
 		assertEquals("08/10/2000", wrappedBean.friend.birthday)
 		assertEquals("10.705,87", wrappedBean.friend.income)
+		assertEquals("MALE", wrappedBean.friend.gender)
 	}
 
 
@@ -45,13 +50,15 @@ class WrappedBeanTests extends GroovyTestCase {
 		wrappedBean.friend.name = "John"
 		wrappedBean.friend.birthday = "08/10/2000"
 		wrappedBean.friend.income = "10.705,87"
+		wrappedBean.friend.gender = "MALE"
 		assertEquals("John", p.friend.name)
 		assertEquals(new GregorianCalendar(2000, 9, 8).time, p.friend.birthday)
 		assertEquals(new BigDecimal("10705.87"), p.friend.income)
+		assertEquals(Gender.MALE, p.friend.gender)
 	}
 
 	void testDeepNestedGet() {
-		Person p1 = new Person(name:"John", birthday: new GregorianCalendar(2000, 9, 8).time, income: 10705.87)
+		Person p1 = new Person(name:"John", birthday: new GregorianCalendar(2000, 9, 8).time, income: 10705.87, gender: Gender.MALE)
 		Person p2 = new Person(friend:p1)
 		Person p3 = new Person(friend:p2)
 		Person p4 = new Person(friend:p3)
@@ -60,6 +67,7 @@ class WrappedBeanTests extends GroovyTestCase {
 		assertEquals("John", wrappedBean.friend.friend.friend.name)
 		assertEquals("08/10/2000", wrappedBean.friend.friend.friend.birthday)
 		assertEquals("10.705,87", wrappedBean.friend.friend.friend.income)
+		assertEquals("MALE", wrappedBean.friend.friend.friend.gender)
 	}
 
 	void testDeepNestedSet() {
@@ -71,9 +79,11 @@ class WrappedBeanTests extends GroovyTestCase {
 		wrappedBean.friend.friend.friend.name = "John"
 		wrappedBean.friend.friend.friend.birthday = "08/10/2000"
 		wrappedBean.friend.friend.friend.income = "10.705,87"
+		wrappedBean.friend.friend.friend.gender = "MALE"
 		assertEquals("John", p.friend.friend.friend.name)
 		assertEquals(new GregorianCalendar(2000, 9, 8).time, p.friend.friend.friend.birthday)
 		assertEquals(new BigDecimal("10705.87"), p.friend.friend.friend.income)
+		assertEquals(Gender.MALE, p.friend.friend.friend.gender)
 	}
 	
 	void testInvokeMethod() {
@@ -105,11 +115,16 @@ class WrappedBeanTests extends GroovyTestCase {
 	}
 }
 
+static enum Gender {
+    MALE, FEMALE;
+}
+
 class Person {
 	String name
 	Date birthday
 	BigDecimal income
 	Person friend
+	Gender gender
 	
 	Errors errors
 	

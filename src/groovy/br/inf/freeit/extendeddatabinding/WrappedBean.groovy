@@ -16,9 +16,9 @@ class WrappedBean {
 	private static List primitiveTypes = [byte.class, short.class, int.class, long.class, char.class, boolean.class]
 	
 	private static boolean isBasicType(Class type) {
-		if (primitiveTypes.contains(type)) return true
+		if (primitiveTypes.contains(type) || type.isEnum()) return true
 		String name = type.name
-		return name.contains("java.") || name.contains("javax.") || name.contains("groovy.")
+		return name.startsWith("java.") || name.startsWith("javax.") || name.startsWith("groovy.")
 	}
 	
     def BeanWrapper beanWrapper

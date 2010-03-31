@@ -5,7 +5,7 @@ import org.springframework.validation.BindingResult
 import br.inf.freeit.extendeddatabinding.WrappedBean
 
 class ExtendedDataBindingGrailsPlugin {
-    def version = 0.3
+    def version = 0.4
     def observe = ['controllers']
     def author = "Luis Fernando Planella Gonzalez"
     def authorEmail = "lfpg.dev@gmail.com"
