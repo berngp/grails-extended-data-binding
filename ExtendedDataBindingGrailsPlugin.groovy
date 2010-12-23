@@ -4,6 +4,9 @@ import org.springframework.validation.DataBinder
 import org.springframework.validation.BindingResult 
 import br.inf.freeit.extendeddatabinding.WrappedBean
 
+/**
+ *@todo add the pluginExcludes to avoid files that shouldn't be packed in the plugin.
+ */
 class ExtendedDataBindingGrailsPlugin {
     def version = 0.4
     def observe = ['controllers']
