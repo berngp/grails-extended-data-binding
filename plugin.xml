@@ -1,5 +1,5 @@
-<plugin name='extended-data-binding' version='0.4' grailsVersion='1.2.2 &gt; *'>
-  <author>Luis Fernando Planella Gonzalez</author>
+<plugin name='extended-data-binding' version='0.5-M1' grailsVersion='1.3.0 &gt; *'>
+  <author>Luis Fernando Planella Gonzalez, Bernardo Gomez Palacio</author>
   <authorEmail>lfpg.dev@gmail.com</authorEmail>
   <title>This plugin extends Grails' data binding possibilities, both for parsing the user input and to present formatted data</title>
   <description>The extended data binding plugin aims to allow configuring the DataBinder which controllers will use to parse
@@ -24,10 +24,6 @@ but automatically wrapping each element)
     <resource>UrlMappings</resource>
     <resource>ExtendedDataBindingTagLib</resource>
   </resources>
-  <dependencies>
-    <resolvers>
-      <resolver type='grailsPlugins' name='grailsPlugins' />
-    </resolvers>
-  </dependencies>
+  <dependencies />
   <behavior />
 </plugin>

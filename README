@@ -1,1 +1,3 @@
-
+Fork of the grails-extended-data-binding plugin hosted at http://svn.codehaus.org/grails-plugins/grails-extended-data-binding.  
+As per its original description the extended data binding plugin allows configuring the DataBinder which controllers will 
+use to parse the user input and populate objects, as well as wrapping objects to format data as strings in order to display data.
