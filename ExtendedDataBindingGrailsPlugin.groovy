@@ -15,7 +15,7 @@ class ExtendedDataBindingGrailsPlugin {
   def pluginExcludes = [
           "grails-app/conf",
           "grails-app/views",
-          "web-app"
+          "web-app/*"
   ]
  
   def author = "Luis Fernando Planella Gonzalez, Bernardo Gomez Palacio"
